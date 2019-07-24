@@ -1,0 +1,25 @@
+#1.
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+        rows = len(array) - 1
+        clos = len(array[0])-1
+        i = 0
+        while i <= rows and clos >= 0:
+            if array[i][clos] == target:
+                return True
+            elif array[i][clos] > target:
+                clos -= 1
+            else:
+                i += 1
+        return False
+#2.
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        for i in range(len(array)):
+            for j in range(len(array[0])):
+                if array[i][j] == target:
+                    return True
+        return False
