@@ -1,0 +1,49 @@
+#1.
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        # write code here
+        n = len(rotateArray)
+        if n==0:
+            return 0
+        i = n - 1
+        while i > 0:
+            if rotateArray[i] < rotateArray[i-1]:
+                return rotateArray[i]
+                break
+            else:
+                i -= 1
+#2.
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        # write code here
+        if not rotateArray:
+            return 0
+        else:
+            return min(rotateArray)
+#3.
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        # write code here
+        if not rotateArray:
+            return 0
+        else:
+            rotateArray.sort()
+            return rotateArray[0]
+#4.
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+        # write code here
+        n = len(rotateArray)
+        if n == 0:
+            return 0
+        l = 0
+        r = n - 1
+        while l < r:
+            mid = (l + r)/2#(python3,mid = (l+r)//2
+            if rotateArray[mid] > rotateArray[l]:
+                l = mid
+            elif rotateArray[mid] < rotateArray[r]:
+                r = mid
+            else:
+                l += 1
+        return rotateArray[l]
