@@ -1,0 +1,20 @@
+#1.
+class Solution:
+    def rectCover(self, number):
+        # write code here
+        res = [0,1,2]
+        while len(res)<= number:
+            res.append(res[-1]+res[-2])
+        return res[number]
+#2.
+class Solution:
+    def rectCover(self, number):
+        # write code here
+        if number <=1:
+            return number
+        a = 1
+        b = 1
+        while number>1:
+            a,b=b,a+b
+            number -= 1
+        return b
