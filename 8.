@@ -1,0 +1,14 @@
+#1.跳台阶
+class Solution:
+    def jumpFloor(self, number):
+        # write code here
+        if number <= 0:
+            return 0
+        if number == 1:
+            return 1
+        a = 1
+        b = 1
+        for i in range(number):
+            a, b = b, a+b 
+        return a
+#2.
