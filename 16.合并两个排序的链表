@@ -27,6 +27,26 @@ class Solution:
     # 返回合并后列表
     def Merge(self, pHead1, pHead2):
         # write code here
+        res = []
+        while pHead1:
+            res.append(pHead1.val)
+            pHead1 = pHead1.next
+        while pHead2:
+            res.append(pHead2.val)
+            pHead2 = pHead2.next
+        res.sort()
+        dummy = ListNode(0)
+        pre = dummy
+        for i in res:
+            node = ListNode(i)
+            pre.next = node
+            pre = pre.next
+        return dummy.next
+#3.
+class Solution:
+    # 返回合并后列表
+    def Merge(self, pHead1, pHead2):
+        # write code here
         if pHead1 is None:
             return pHead2
         if pHead2 is None:
