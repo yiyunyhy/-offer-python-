@@ -1,0 +1,38 @@
+#1.
+class Solution:
+    def Power(self, base, exponent):
+        # write code here
+        return base**exponent
+#2.
+class Solution:
+    def Power(self, base, exponent):
+        # write code here
+        res = 0
+        if base == 0:
+            return False
+        if exponent == 0:
+            return 1
+        if exponent < 0:
+            res = 1
+        result = 1
+        for i in range(abs(exponent)):
+            result *= base
+        if res == 1:
+            result = 1/result
+        return result
+#3.
+class Solution:
+    def Power(self, base, exponent):
+        # write code here
+        if exponent == 0:
+            return 1
+        elif exponent > 0:
+            n = 1
+            for i in range(0,exponent):
+                n  = n * base
+            return n
+        else:
+            n = 1.0
+            for i in range(-exponent):
+                n = n / base
+            return n
