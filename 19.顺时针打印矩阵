@@ -1,0 +1,35 @@
+#1.
+class Solution:
+    # matrix类型为二维列表，需要返回列表
+    def printMatrix(self, matrix):
+        # write code here
+        #打印第一行，删除第一行，逆时针转动90度。重复以上步骤，直到矩阵为空。
+        s = []
+        while matrix:
+            s += matrix[0]
+            del matrix[0]
+            matrix = zip(*matrix)[::-1]
+        return s
+#2.
+class Solution:
+    # matrix类型为二维列表，需要返回列表
+    def printMatrix(self, matrix):
+        # write code here
+        result = []
+        while matrix:
+            result = result + matrix.pop(0)
+            if not matrix:
+                break
+            matrix = self.turn(matrix)
+        return result
+    def turn(self,matrix):
+        r = len(matrix)
+        c = len(matrix[0])
+        b = []
+        for i in range(c):
+            a = []
+            for j in range(r):
+                a.append(matrix[j][i])
+            b.append(a)
+        b.reverse()
+        return b
