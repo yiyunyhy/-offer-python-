@@ -1,0 +1,14 @@
+#1.
+class Solution:
+    def reOrderArray(self, array):
+        # write code here
+        list1 = []
+        list2 = []
+        for i in array:
+            if i % 2 == 0:
+                list1.append(i)
+            else:
+                list2.append(i)
+        array = list2 + list1
+        return array
+#2.
