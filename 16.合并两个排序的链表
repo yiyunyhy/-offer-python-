@@ -1,0 +1,39 @@
+#1.
+class Solution:
+    # 返回合并后列表
+    def Merge(self, pHead1, pHead2):
+        # write code here
+        dummy = ListNode(0)
+        pHead = dummy
+        
+        while pHead1 and pHead2:
+            if pHead1.val >= pHead2.val:
+                dummy.next = pHead2
+                pHead2 = pHead2.next
+            else:
+                dummy.next = pHead1
+                pHead1 = pHead1.next
+                
+            dummy = dummy.next
+            
+        if pHead1:
+            dummy.next = pHead1
+        elif pHead2:
+            dummy.next = pHead2
+            
+        return pHead.next
+#2.
+class Solution:
+    # 返回合并后列表
+    def Merge(self, pHead1, pHead2):
+        # write code here
+        if pHead1 is None:
+            return pHead2
+        if pHead2 is None:
+            return pHead1
+        if pHead1.val < pHead2.val:
+            pHead1.next = self.Merge(pHead1.next,pHead2)
+            return pHead1
+        else:
+            pHead2.next = self.Merge(pHead1,pHead2.next)
+            return pHead2
