@@ -1,0 +1,23 @@
+#1.
+class Solution:
+    def VerifySquenceOfBST(self, sequence):
+        # write code here
+        s = sequence
+        if s == None or len(s) == 0:
+            return False
+        l = len(s)
+        root = s[-1]
+        for i in range(l):
+            if s[i] > root:
+                break
+        for j in range(i,l):
+            if s[j] < root:
+                return False
+        left = True
+        if i > 0:
+            left = self.VerifySquenceOfBST(s[0:i])
+        right = True
+        if i < (l-1):
+            right = self.VerifySquenceOfBST(s[i:-1])
+        return left and right
+#2.
