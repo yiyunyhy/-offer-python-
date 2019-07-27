@@ -1,0 +1,44 @@
+#1.
+# -*- coding:utf-8 -*-
+# class RandomListNode:
+#     def __init__(self, x):
+#         self.label = x
+#         self.next = None
+#         self.random = None
+class Solution:
+    # 返回 RandomListNode
+    def Clone(self, pHead):
+        # write code here
+        if not pHead:
+            return None
+        
+        dummy = pHead
+        
+        while dummy:
+            dummynext = dummy.next
+            copynode = RandomListNode(dummy.label)
+            copynode.next = dummynext
+            dummy.next = copynode
+            dummy = dummynext
+            
+        dummy = pHead
+        while dummy:
+            dummyrandom = dummy.random
+            copynode = dummy.next
+            if dummyrandom:
+                copynode.random = dummyrandom.next
+            dummy = copynode.next
+            
+        dummy = pHead
+        copyHead = pHead.next
+        while dummy:
+            copyNode = dummy.next
+            dummynext = copyNode.next
+            dummy.next = dummynext
+            if dummynext:
+                copyNode.next = dummynext.next
+            else:
+                copyNode.next = None
+            dummy = dummynext
+        return copyHead
+#2.
