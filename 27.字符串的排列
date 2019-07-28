@@ -1,0 +1,29 @@
+#1.
+# -*- coding:utf-8 -*-
+class Solution:
+    def Permutation(self, ss):
+        # write code here
+        import itertools
+        result = []
+        if not ss:
+            return []
+        else:
+            res = itertools.permutations(ss)
+            for i in res:
+                if "".join(i) not in result:
+                    result.append("".join(i))
+        return result
+#2.
+class Solution:
+    def Permutation(self, ss):
+        # write code here
+        if not ss:
+            return []
+        if len(ss) == 1:
+            return [ss]
+        res = []
+        for i in range(len(ss)):
+            for j in self.Permutation(ss[:i]+ss[i+1:]):
+                res.append(ss[i]+j)
+        return sorted(list(set(res)))
+#3.
