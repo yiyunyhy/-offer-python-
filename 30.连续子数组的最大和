@@ -1,0 +1,28 @@
+#1.
+class Solution:
+    def FindGreatestSumOfSubArray(self, array):
+        # write code here
+        targets = []
+        for i in range(len(array)):
+            num = 0
+            numlist = []
+            for j in range(i, len(array)):
+                num += array[j]
+                numlist.append(num)
+                maxNum = max(numlist)
+            targets.append(maxNum)
+        return max(targets)
+#2.
+class Solution:
+    def FindGreatestSumOfSubArray(self, array):
+        # write code here
+        max_sum = array[0]
+        pre_sum = 0
+        for i in array:
+            if pre_sum < 0:
+                pre_sum = i
+            else:
+                pre_sum += i
+            if pre_sum > max_sum:
+                max_sum = pre_sum
+        return max_sum
