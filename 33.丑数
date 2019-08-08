@@ -1,0 +1,21 @@
+#1.
+class Solution:
+    def GetUglyNumber_Solution(self, index):
+        # write code here
+        if index <= 0:
+            return 0
+        res = [1]
+        a1 = 0
+        a2 = 0
+        a3 = 0
+        for i in range(index-1):
+            newugly = min(res[a1]*2,res[a2]*3,res[a3]*5)
+            res.append(newugly)
+            if newugly % 2 == 0 :
+                a1 += 1
+            if newugly % 3 == 0:
+                a2 += 1
+            if newugly % 5 == 0:
+                a3 += 1
+        return res[-1]
+#2.
