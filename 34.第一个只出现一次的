@@ -1,0 +1,38 @@
+#1.
+class Solution:
+    def FirstNotRepeatingChar(self, s):
+        # write code here
+        if len(s) <= 0 or len(s) > 1000:
+            return -1
+        for i in s:
+            if s.count(i)==1:
+                return s.index(i)
+                break
+#2.
+class Solution:
+    def FirstNotRepeatingChar(self, s):
+        # write code here
+        ls = [0]*256
+        for i in s:
+            ls[ord(i)] += 1
+        for j in s:
+            if ls[ord(j)]==1:
+                return s.index(j)
+                break
+        return -1
+#3.
+class Solution:
+    def FirstNotRepeatingChar(self, s):
+        # write code here
+        if s == "":
+            return -1
+        else:
+            counts = {}
+            for i in s:
+                if i not in counts:
+                    counts[i] = 1
+                else:
+                    counts[i] += 1
+            for index,i in enumerate(s):
+                if counts[i] == 1:
+                    return index
