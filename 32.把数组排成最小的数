@@ -1,0 +1,30 @@
+#1.
+class Solution:
+    def PrintMinNumber(self, numbers):
+        # write code here
+        string = [str(num) for num in numbers]
+        
+        flag = True
+        count = len(string) - 1
+        while flag and count > 0:
+            flag = False
+            for i in range(len(string)-1):
+                if self.theMax(string[i], string[i+1]) == string[i]:
+                    temp = string[i]
+                    del string[i]
+                    string.insert(i+1, temp)
+                    flag = True
+            count -= 1
+        string = ''.join(string)
+        return string
+    def theMax(self,str1,str2):
+        return str1 if str1+str2 > str2+str1 else str2
+#2.
+class Solution:#(python2)
+    def PrintMinNumber(self, numbers):
+        # write code here
+        if not numbers:
+            return ""
+        lmb = lambda n1, n2:int(str(n1)+str(n2))-int(str(n2)+str(n1))
+        array = sorted(numbers,cmp=lmb)
+        return ''.join([str(i) for i in array])
