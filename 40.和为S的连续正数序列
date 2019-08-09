@@ -1,0 +1,22 @@
+#1.
+# -*- coding:utf-8 -*-
+class Solution:
+    def FindContinuousSequence(self, tsum):
+        # write code here
+        small = 1
+        big = 2
+        l = (tsum + 1) / 2
+        curr = small + big
+        res = []
+        while small < l:
+            if curr == tsum:
+                res.append(range(small, big+1))
+            while curr > tsum and small < l:
+                curr -= small
+                small += 1
+                if curr == tsum:
+                    res.append(range(small, big + 1))
+            big += 1
+            curr += big
+        return res
+#2.
