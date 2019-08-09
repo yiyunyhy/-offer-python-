@@ -1,0 +1,86 @@
+#1.
+# -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def FindFirstCommonNode(self, pHead1, pHead2):
+        # write code here
+        p1, p2 = pHead1, pHead2
+        while p1!=p2:
+            p1 = p1.next if p1 else pHead2
+            p2 = p2.next if p2 else pHead1
+        return p1
+#2.
+# -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def FindFirstCommonNode(self, pHead1, pHead2):
+        # write code here
+        if not pHead1 or not pHead2:
+            return None
+        
+        stack1 = []
+        stack2 = []
+        
+        while pHead1:
+            stack1.append(pHead1)
+            pHead1 = pHead1.next
+        
+        while pHead2:
+            stack2.append(pHead2)
+            pHead2 = pHead2.next
+            
+        first = None
+        while stack1 and stack2:
+            top1 = stack1.pop()
+            top2 = stack2.pop()
+            if top1 is top2:
+                first = top1
+            else:
+                break
+        return first
+#3.
+# -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def FindFirstCommonNode(self, pHead1, pHead2):
+        # write code here
+        if not pHead1 or not pHead2:
+            return None
+        
+        p1, p2 = pHead1, pHead2
+        length1 = length2 = 0
+        
+        while p1:
+            length1 += 1
+            p1 = p1.next
+        while p2:
+            length2 += 1
+            p2 = p2.next
+            
+        head1 = pHead1
+        head2 = pHead2
+        if length1 > length2:
+            while length1 - length2:
+                head1 = head1.next
+                length1 -= 1
+        else:
+            while length2 - length1:
+                head2 = head2.next
+                length2 -= 1
+                
+        while head1 and head2:
+            if head1 is head2:
+                return head1
+            head1 = head1.next
+            head2 = head2.next
+            
+        return None
