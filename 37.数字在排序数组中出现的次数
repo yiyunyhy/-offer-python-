@@ -1,0 +1,40 @@
+#1.
+# -*- coding:utf-8 -*-
+class Solution:
+    def GetNumberOfK(self, data, k):
+        # write code here
+        count = 0
+        for i in data:
+            if i == k:
+                count += 1
+        return count
+#2.
+class Solution:
+    def GetNumberOfK(self, data, k):
+        # write code here
+        return data.count(k)
+#3.
+class Solution:
+    def GetNumberOfK(self, data, k):
+        # write code here
+        if not data:
+            return 0
+        low = 0
+        high = len(data) - 1
+        cnt = 0
+        end = len(data) - 1
+        while low <= high:
+            medium = (low + high)/2
+            if data[medium] == k:
+                while medium >= 0 and data[medium] == k:
+                    medium -= 1
+                medium += 1
+                while medium <= end and data[medium] == k:
+                    medium += 1
+                    cnt += 1
+                return cnt
+            elif data[medium] < k:
+                low = medium + 1
+            else:
+                high = medium -1
+        return cnt
