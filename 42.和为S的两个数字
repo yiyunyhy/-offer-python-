@@ -1,0 +1,26 @@
+#1.
+class Solution:
+    def FindNumbersWithSum(self, array, tsum):
+        # write code here
+        low = 0
+        high = len(array) - 1
+        while low < high:
+            if array[low] + array[high] > tsum:
+                high -= 1
+            elif array[low] + array[high] < tsum:
+                low += 1
+            else:
+                return [array[low],array[high]]
+        return []
+#2.
+class Solution:
+    def FindNumbersWithSum(self, array, tsum):
+        # write code here
+        for i in array:
+            if tsum-i in array:
+                if tsum-i == i:
+                    if array.count(i)>1:
+                        return [i,i]
+                else:
+                    return [i,tsum-i]
+        return []
