@@ -1,0 +1,22 @@
+#1.
+class Solution:
+    def Add(self, num1, num2):
+        # write code here
+        temp=[num1,num2]
+        return sum(temp)
+#2.
+# -*- coding:utf-8 -*-
+class Solution:
+    def Add(self, num1, num2):
+        # write code here
+        if not num1:
+            return num2
+        elif not num2:
+            return num1
+        while num2:
+            num1,num2 = (num1^num2)&0xFFFFFFFF, (num1&num2)<<1
+         
+        if num1>>31 ==0:
+            return num1 
+        else: 
+            return  num1 - pow(2,32)
