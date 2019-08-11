@@ -1,0 +1,26 @@
+#1.
+class Solution:
+    def IsContinuous(self, numbers):
+        # write code here
+        if not numbers:
+            return False
+        numbers.sort()
+        zeroNum = numbers.count(0)
+        for i, v in enumerate(numbers[:-1]):
+            if v != 0:
+                if numbers[i+1]==v:
+                    return False
+                zeroNum = zeroNum - (numbers[i+1] - v) + 1
+                if zeroNum < 0:
+                    return False:
+        return True
+#2.
+class Solution:
+    def IsContinuous(self, numbers):
+        # write code here
+        if len(numbers):
+            while min(numbers)==0:
+                numbers.remove(0)
+            if max(numbers) - min(numbers)<=4 and len(numbers)==len(set(numbers)):
+                return True
+        return False
