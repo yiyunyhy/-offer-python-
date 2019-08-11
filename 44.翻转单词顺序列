@@ -1,0 +1,19 @@
+#1.
+class Solution:
+    def ReverseSentence(self, s):
+        # write code here
+        alist = s.split(" ")
+        alist.reverse()
+        return " ".join([x for x in alist])
+#2.
+class Solution:
+    def ReverseSentence(self, s):
+        # write code here
+        alist = s.split(" ")
+        stack = []
+        for i in alist:
+            stack.append(i)
+        result = []
+        while len(stack) > 0:
+            result.append(stack.pop())
+        return " ".join([x for x in result])
