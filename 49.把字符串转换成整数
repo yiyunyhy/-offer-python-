@@ -1,0 +1,47 @@
+#1.
+class Solution:
+    def StrToInt(self, s):
+        # write code here
+        numlist = ['0','1','2','3','4','5','6','7','8','9','+','-']
+        sum = 0
+        label = 1
+        if s == '':
+            return 0
+        for string in s:
+            if string in numlist:
+                if string=='+':
+                    label=1
+                    continue
+                if string=='-':
+                    label=-1
+                    continue
+                else:
+                    sum=sum*10+numlist.index(string)
+            if string not in numlist:
+                sum=0
+                break
+        return sum*label
+#2.
+class Solution:
+    def StrToInt(self, s):
+        # write code here
+        if s is None:
+            return 0
+        lens = len(s)
+        if lens == 0:
+            return 0
+        res = 0
+        start = 0
+        flag = 1
+        if s[0] == '+' or s[0]=='-':
+            start = 1
+            if s[0] == '-':
+                flag = -1
+        for i in range(start, lens):
+            if '0'<=s[i] and s[i] <= '9':
+                res = res*10 + (ord(s[i])-ord('0'))
+            else:
+                return 0
+        if flag == -1:
+            res = -res
+        return res
