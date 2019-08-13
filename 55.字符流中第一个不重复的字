@@ -1,0 +1,32 @@
+#1.
+# -*- coding:utf-8 -*-
+class Solution:
+    # 返回对应char
+    def __init__(self):
+        self.charDict = {}
+        self.charlist = []
+    def FirstAppearingOnce(self):
+        # write code here
+        for key in self.charlist:
+            if self.charDict[key]==1:
+                return key
+        return "#"
+    def Insert(self, char):
+        # write code here
+        self.charDict[char]=1 if char not in self.charDict else self.charDict[char]+1
+        self.charlist.append(char)
+
+#2.
+class Solution:
+    # 返回对应char
+    def __init__(self):
+        self.charlist = []
+    def FirstAppearingOnce(self):
+        # write code here
+        for key in self.charlist:
+            if self.charlist.count(key)==1:
+                return key
+        return "#"
+    def Insert(self, char):
+        # write code here
+        self.charlist.append(char)
