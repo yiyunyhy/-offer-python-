@@ -1,0 +1,88 @@
+#1.
+class Solution:
+    # s字符串
+    def isNumeric(self, s):
+        # write code here
+        hasE = False
+        sign = False
+        decimal = False
+        if s is None:
+            return False
+        for i in range(len(s)):
+            if s[i]=="e" or s[i]=="E":
+                if i==len(s)-1:
+                    return False #e后面一定要有数字
+                if hasE:
+                    return False
+                hasE = True
+            elif s[i]=="+" or s[i]=="-":
+                if sign and s[i-1] != "e" and s[i-1] != "E":  #第二次出现符号要紧跟e后面
+                    return False
+                if sign==False and i>0 and s[i-1] != "e" and s[i-1] != "E": #第一次出现符号，且不在开头，那么也要紧跟e后面
+                    return False
+                sign == True
+            elif s[i]==".":
+                if hasE or decimal: #小数点不在e后面且不能出现两次
+                    return False
+                decimal = True
+            elif s[i]<"0" or s[i]>"9":
+                return False
+        return True
+#2.
+class Solution:
+    # s字符串
+    def isNumeric(self, s):
+        # write code here
+        if s[0]=="+" or s[0]=="-":
+            if s[1]!="+" and s[1]!="-":
+                try:
+                    if float(s[1:]):
+                        return True
+                except:
+                    return False
+            else:
+                return False
+        else:
+            try:
+                if float(s):
+                    return True
+            except:
+                return False
+#3.
+class Solution:
+    # s字符串
+    def isNumeric(self, s):
+        # write code here
+        
+        if s is None or len(s) == 0:
+            return False
+
+        # 是否有e
+        hasE = False
+        # 是否有小数
+        isDecimal = False
+        # 是否有+-符号
+        hasSign = False
+
+        for i in range(len(s)):
+            # 如果有e,只能有一个e且不能是最后一个
+            if s[i] == "e" or s[i] == "E":
+                if hasE or i == len(s) - 1:
+                    return False
+                hasE = True
+            # 小数点不能重复出现或和e共线
+            elif s[i] == ".":
+                if hasE or isDecimal:
+                    return False
+                isDecimal = True
+            elif s[i] == "-" or s[i] == "+":
+                # 重复出现符号时，必须跟在e后面
+                if hasSign and s[i - 1] != "e" and s[i - 1] != "E":
+                    return False
+                # 重复出现符号时，必须跟在e后面
+                if not hasSign and i > 0 and s[i - 1] != "e" and s[i - 1] != "E":
+                    return False
+                hasSign = True
+            elif s[i] < "0" or s[i] > "9":
+                return False
+        return True
