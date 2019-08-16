@@ -1,0 +1,42 @@
+#1.
+# -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def deleteDuplication(self, pHead):
+        # write code here
+        if pHead == None or pHead.next == None:
+            return pHead
+        if pHead.val == pHead.next.val:
+            temp = pHead.next
+            while temp and temp.val==pHead.val:
+                temp = temp.next
+            return self.deleteDuplication(temp)
+        else:
+            pHead.next = self.deleteDuplication(pHead.next)
+            return pHead
+            
+
+#2.
+# -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def deleteDuplication(self, pHead):
+        # write code here
+        res = []
+        while pHead:
+            res.append(pHead.val)
+            pHead = pHead.next
+        res = list(filter(lambda c: res.count(c) == 1, res))
+        dummy = ListNode(0)
+        pre = dummy
+        for i in res:
+            node = ListNode(i)
+            pre.next = node
+            pre = pre.next
+        return dummy.next
